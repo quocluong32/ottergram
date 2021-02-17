@@ -61,7 +61,7 @@ a {
     display: flex;
     justify-content: space-between;
     list-style: none;
-    padding: 0;
+    padding: 20px 0;
 
     white-space: nowrap;
     overflow-x: auto;
@@ -73,7 +73,12 @@ a {
     max-width: 120px; 
     border: 1px solid rgb(100%, 100%, 100%);
     border: 1px solid rgba(100%, 100%, 100%, 0.8);
-    background: blue;
+    background:rgb(149, 194, 215);
+    transition: transform 133ms ease-in-out;
+}
+
+.thumbnail-item:hover{
+    transform: scale(1.2);
 }
 
 .thumbnail-title {
@@ -101,8 +106,47 @@ a {
 .detail-image-frame {
     position: relative;
     text-align: center;
+    transition: transform 333ms cubic-bezier(1, .06, .28, 1);
 }
 
+.is-tiny{
+    transform: scale(0.001);
+    transition: transform 0ms;
+}
+
+.click-arrow{
+    z-index: 1;
+    position:absolute;
+    display: inline-block;
+    cursor: pointer;
+    top: 50%;
+    line-height: 0;
+    font-size: 100px;
+    padding: 0;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+    color:rgba(227, 225, 238, 0.74)
+
+}
+
+.click-prev{
+    left:0;
+
+}
+
+.click-next{
+    right: 0;
+}
+
+.click-arrow:active{
+    border: transparent;
+    color:rgba(0, 0, 0, 0.9)
+}
+
+.click-arrow:focus{
+    outline: none;
+}
 
 .detail-image {
     width: 90%;
@@ -116,4 +160,38 @@ a {
     color: white;
     text-shadow: rgba(0, 0, 0, 0.9) 1px 2px 9px;
     font-size: 40px;
+}
+
+.hidden-detail .detail-image-container {
+    display: none;
+}
+
+.hidden-detail .thumbnail-list {
+    flex-direction: column;
+    align-items: center;
+}
+
+.hidden-detail .thumbnail-item{
+    max-width: 80%;
+}
+
+@media all and (min-width: 768px) {
+    .main-content{
+        flex-direction: row;
+        overflow: hidden;
+    }
+    .thumbnail-list {
+        flex-direction: column;
+        order: 0;
+        margin-left: 20px;
+        padding: 0 35px;
+    }
+
+    .thumbnail-item {
+        max-width: 260px;
+    }
+
+    .thumbnail-item + .thumbnail-item {
+        margin-top: 20px;
+    }
 }
