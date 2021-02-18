@@ -150,6 +150,7 @@ a {
 
 .detail-image {
     width: 90%;
+    max-width: 720px;
 }
 
 .detail-image-title {
